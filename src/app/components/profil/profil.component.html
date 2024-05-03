@@ -1,0 +1,147 @@
+<h1>Profil</h1>
+    <div class="main-content " >
+        <main>
+            <div class="card2 " >
+                <div class="card-body ">
+                  <div class="row "> 
+                    <div class="col-auto">
+                      <div class="avatar ">
+                        <img [src]="imgprofil" alt="" style="border-radius: 50%;width: 100px;height: 100px;" >
+                      </div>
+                    </div>
+                    <div class="col-auto my-auto" style="margin: 10px;">
+                     <div class="h-100">
+                        <h5 class="mb-1">
+                          {{ admin.firstname }}&nbsp;{{ admin.lastname }}
+                        </h5>
+                        <p class="mb-0 font-weight-bold text-sm">
+                          {{role}},
+                        </p>
+                      </div>
+                      
+                    </div>
+                   
+                    </div>
+                  </div>
+                  <div class="card3 " >
+                    <div class="card-body ">
+                      <div class="row ">
+                       
+                        <div class="colonne">
+                          <div class="info">
+                            <h4>
+                              Personal Informations
+                            </h4>
+                             
+                            <div >
+                            <p >
+                             <b> <p><strong>First Name:</strong> {{ admin.firstname }}</p></b><br>
+                            
+                            
+                            <br> 
+                            <p >
+                               <b><p><strong>Email: </strong> {{ admin.login }}</p></b> <br>
+                                 
+                              </p>
+                             </div>
+                             <div>
+                                <p >
+                                  <b> <p><strong>Last Name:</strong> {{ admin.lastname }}</p></b><br>
+                                 
+                                </p>
+                                <br>
+                                <p >
+                                   <b><p><strong> phone number:</strong> {{ admin.phone}}</p></b><br>
+                                     
+                                  </p>
+                                 </div>
+                                 <div>
+                                    <p >
+                                     <!-- <b>Etat</b> <br>
+                                     {{ admin.etat}}-->
+                                    </p>
+                                    
+                                     </div>  </div>
+                                    </div>
+                      </div>
+                    </div>
+
+         <button class="fa fa-pencil-square-o" (click)="editProfile(admin)" style="width: 100px;height: 30px;margin-top: 20px;border-radius: 20px;background-color: #a0dd91;border: none;margin-left: 70%;">Edit</button>      
+         <br><br><br><br><br><br><br>
+
+
+         <!-- ///////////////////////////////////////////////////// -->
+<div class="popup-container" *ngIf="showProfileEditPopup">
+    <form>
+      <div class="card2">
+        <h1>Edit Profile</h1><br>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <div class="avatar">
+                <img [src]="imgprofil" alt="" style="border-radius: 50%; width: 100px; height: 100px;">
+              </div>
+            </div>
+            <div class="col my-auto" style="margin: 10px;">
+              <div class="h-100">
+                <table style="margin-left: 5%; width: 100%; vertical-align: middle;">
+                  <tr>
+                    <td style="padding-right: 15px;">
+                      <p style="margin-bottom: 5%;">First Name:</p>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" style="margin-bottom: 5px;" [(ngModel)]="admin.firstname" name="editFirstname" placeholder="First Name">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-right: 15px;">
+                      <p style="margin-bottom: 5%;">Last Name:</p>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" style="margin-bottom: 5px;" [(ngModel)]="admin.lastname" name="editLastname" placeholder="Last Name">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+        <div class="card3">
+          <div class="card-body">
+            <div class="row">
+              <div class="colonne">
+                <div class="info">
+                  <!-- Wrap each input field in a separate div -->
+                  <div class="form-group col-auto my-auto">
+                    <div class="row">
+                      <!-- Password -->
+                      <div class="col-sm">
+                        <label for="editPassword" style="margin-bottom: 3%;">Password:</label><br>
+                        <label for="editPhoneNumber" style="margin-top: 2%;">Phone Number:</label>
+                      </div>
+                      <!-- Phone -->
+                      <div class="col-sm">
+                        <input type="password" class="form-control" style="margin-bottom: 5px;" [(ngModel)]="admin.password" name="editPassword" id="editPassword" placeholder="Password">
+                        <input type="text" class="form-control" style="margin-bottom: 10px;" [(ngModel)]="admin.phone" name="editPhoneNumber" id="editPhoneNumber" placeholder="Phone Number">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="submitEditProfileForm()" style="margin-top: 20px; padding: 5px;">Save Changes</button>
+        <button class="btn btn-primary ms-3" (click)="closeEditProfileForm()" style="margin-top: 20px; padding: 5px;">Cancel</button>
+      </form>
+</div>
+<div class="popup-container" *ngIf="showEditSuccessPopup">
+  <div>
+    <h2>Profile Edited!</h2>
+    <button type="button" class="btn btn-primary" style="padding: 5px;" (click)="closeEditPopup()">Dismiss!</button>
+  </div>
+</div>

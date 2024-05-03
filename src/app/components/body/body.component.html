@@ -1,0 +1,35 @@
+<div class="bg">
+ 
+  <div class="user" > 
+ 
+    <ng-container *ngIf="tokenIsExiste()">
+      <!-- <span (click)="toggleNotificationPopup()" class="bell-icon" style="color:black; border: none;">
+        <i class="fa fa-bell" style="color:black; border: none;"></i>
+
+      
+        <app-notification-popup *ngIf="isNotificationPopupOpen"></app-notification-popup>
+          <span class="position-absolute top-50 start-90 translate-middle p-1 bg-danger border border-light rounded-circle">
+          </span>
+        </span> -->
+          <span class="btn fas fa-user"  style="margin-right: 10px;" routerLink="profil"></span>
+          <span class="btn" routerLink="loginadmin" (click)="logout()" style="margin-right: 10px; border: none; ">logout</span>
+        </ng-container>
+        </div>
+    
+
+      
+     
+  
+      <ng-container *ngIf="tokenIsExiste(); else elseBlock">
+        <div id="body" class="bodytokn" [ngClass]="getBodyClass()" > 
+        <router-outlet></router-outlet>
+        </div>
+        </ng-container>  
+      <ng-template #elseBlock>
+        <div>
+          <div id="body" class="bodynntokn" [ngClass]="getBodyClass()" > 
+            <router-outlet></router-outlet>
+            </div>
+        </div>
+      </ng-template>
+    </div>

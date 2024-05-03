@@ -1,0 +1,68 @@
+<!-- zone-list.component.html -->
+
+<h1>Zones</h1>
+<div class="from-outline mt-3"> 
+ 
+</div>
+
+<div class="from-outline mt-3">
+  <form>
+    <!-- Votre formulaire de recherche et de filtrage ici -->
+  </form>
+</div>
+
+<div class="table">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Zone name</th>
+        <th scope="col">Number of admin</th>
+       <!-- <th scope="col">Stations</th>-->
+        <!-- <th scope="col">Action</th> -->
+      </tr>
+    </thead>
+    <tbody *ngFor="let zone of zoneAdminList">
+      <tr  >
+        <th>{{ zone.name }}</th>
+        <th>{{ zone.nbr }}</th>
+        <!-- <th>
+          <button class="btn btn-outline" (click)="openDeletePopup(zone.name)"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;
+          <button class="btn btn-outline" (click)="openEditPopup(zone.name)"><i class="fa fa-pen" aria-hidden="true"></i></button>&nbsp;
+        </th> -->
+      </tr>
+    </tbody>
+    <tbody *ngFor="let zone of zoneNoAdminList">
+      <tr  >
+        <th>{{ zone.name }}</th>
+        <th>{{ zone.nbr }}</th>
+        <!-- <th>
+          <button class="btn btn-outline" (click)="openDeletePopup(zone.name)"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;
+          <button class="btn btn-outline" (click)="openEditPopup(zone.name)"><i class="fa fa-pen" aria-hidden="true"></i></button>&nbsp;
+        </th> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end" >
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li >
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+<div class="zone-details" *ngIf="selectedZone">
+  <h2>Zone details</h2>
+  <div>
+    <p><strong>ID:</strong> {{ selectedZone.id }}</p>
+    <p><strong>Name of zone:</strong> {{ selectedZone.name }}</p>
+    <p><strong>Number of admin:</strong> {{ selectedZone.admins }} 
+    <p><strong>Stations:</strong> {{ selectedZone.stations }}    
+   
+  </div>
+</div>-->

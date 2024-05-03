@@ -1,0 +1,85 @@
+<h1>Dashboard</h1>
+<div class="cards">
+    <div class="card">
+        <div class="card-icon follow">
+            <span class="fa fa-users"></span>
+        </div>
+    <div class="card-info">
+       <h2>{{statadmin.nbrclient}}</h2>
+       <small>Total Clients</small>
+    </div>
+   <div class="card-images">
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+   </div>
+    </div>
+    <div class="card">
+        <div class="card-icon mod">
+            <span class="fa fa-users"></span>
+        </div>
+    <div class="card-info">
+       <h2>{{statadmin.nbrowners }}</h2>
+       <small>Total Owner</small>
+    </div>
+   <div class="card-images">
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+   </div>
+    </div>
+    <div class="card">
+        <div class="card-icon comment">
+            <span class="fa fa-money"><i class="fa fa-usd" aria-hidden="true"></i></span>
+        </div>
+    <div class="card-info">
+        <h2 [innerHTML]="statadmin.todaysmoney"></h2>
+       <small>Today's money</small>
+    </div>
+    <div class="card-images">
+        <div ><img [src]="imgprofil"></div>
+        <div ><img [src]="imgprofil"></div>
+        <div ><img [src]="imgprofil"></div>
+        <div ><img [src]="imgprofil"></div>
+        <div ><img [src]="imgprofil"></div>
+       </div>
+    </div>
+    <div class="card">
+        <div class="card-icon likes">
+            <span class="fa fa-user"></span>
+        </div>
+    <div class="card-info">
+       <h2>{{statadmin.nbrstation}}</h2>
+       <small>Total Station</small>
+    </div>
+   <div class="card-images">
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+    <div ><img [src]="imgprofil"></div>
+   </div>
+   </div>   
+  </div>
+  <div [chart]="lineChart">
+
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" >
+      <li class="page-item ">
+       <!--<a class="page-link">Previous</a>-->
+       <button class="page-link" (click)="Previous()">Previous</button>
+      </li >
+      <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+      <li class="page-item">
+        <!--<a class="page-link" href="#">Next</a>-->
+        <button class="page-link" (click)="next()">Next</button>
+      </li>
+    </ul>
+  </nav>
