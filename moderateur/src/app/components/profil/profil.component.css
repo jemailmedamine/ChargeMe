@@ -1,0 +1,159 @@
+
+
+*{
+    font-family: 'poppins',sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.user{
+    right: 70%;
+    height: 23px;
+}
+.user span{
+    position: relative;
+    left: 70%;
+}
+main{
+    width: 70%;
+    height: 100%;
+    padding: 1rem;
+    top: 0;
+}
+
+
+.main-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    overflow-y: scroll;
+}
+
+.card-body{
+    width: 10   0%;
+    border-radius: 50px;
+    border: #42BC23 solid 1px;
+    margin-bottom: 30px;
+}
+.card .avatar
+{
+    border-radius: 30px;
+}
+.info{
+    margin-top: 15px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    
+}
+.info p{
+    margin-left: 20px;
+    
+    
+}
+.popup-container {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the container */
+    background-color: rgb(255, 255, 255); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's above other content */
+    border-radius: 10px; /* Adjust as needed */
+    padding: 20px; /* Adjust padding as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow for effect */
+    max-width: 90%; /* Adjust based on your design */
+    max-height: 90%; /* Adjust based on your design */
+}
+
+
+
+.popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+    max-width: 400px; /* adjust based on your design */
+    width: 100%;
+    max-height: 90%; /* adjust based on your design */
+    overflow-y: auto; /* enable scrolling if content exceeds container height */
+    z-index: 10000; /* ensure the main popup is below the success popup */
+}
+
+.popup-container-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* ensure the success popup is above other content */
+}
+
+.popup-success {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+    max-width: 400px; /* adjust based on your design */
+    width: 100%;
+    max-height: 80%; /* adjust based on your design */
+    overflow-y: auto; /* enable scrolling if content exceeds container height */
+}
+.formcontrol
+{
+    background-color: transparent;
+    border: no;
+}
+.fa fa-pencil-square-o
+{
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: #a0dd91;
+    border: none;
+    margin-left: 70%;
+    right: 0;
+    cursor: pointer;
+}
+/* Add this CSS to your existing stylesheet */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.info {
+    margin-top: 15px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.info p {
+    margin-left: 20px;
+}
+h1{
+    display: block;
+}
+.form-control
+
+{
+    width: 80%;
+}

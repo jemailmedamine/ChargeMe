@@ -1,0 +1,171 @@
+.from-outline form {
+  display: flex;
+  align-items: left;
+  margin-left: 1rem;
+} 
+@media (max-width: 768px) {
+  .from-outline form {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .from-outline form input,
+  .from-outline form button {
+      margin-top: 10px;
+      width: 100%;
+  }
+}
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}  
+.table{
+ margin-top: 50px;
+ vertical-align: middle;
+}
+.pagination ul{
+  color: #a0dd91;
+  margin-left: 70%;
+}
+.pagination .page-link{
+ 
+  color: #a0dd91;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour assombrir le fond */
+  z-index: 1000;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: transparent;
+}
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* ensure the popup is above other content */
+}
+
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+  max-width: 400px; /* adjust based on your design */
+  width: 100%;
+  max-height: 80%; /* adjust based on your design */
+  overflow-y: auto; /* enable scrolling if content exceeds container height */
+  z-index: 10000; /* ensure the main popup is below the success popup */
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #42BC23;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #2d8b15;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #ffc31f;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background-color: #bb8b07;
+}
+
+.mid {
+  display: flex;
+  justify-content: center;
+}
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1; /* Ensure it's above other content */
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.close-btn:focus {
+  outline: none;
+}
+
+.close-btn:hover {
+  color: red; /* Change color on hover if needed */
+}
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.xbtn:active {
+  transform: translateY(4px);
+ }
+
+.xbtn {
+  height: 50%;
+ }

@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="borne" *ngFor="let borne of allborn.borns">
+      <p><b>{{ borne.name }}</b></p>
+      <ng-container *ngIf="borne.etatB=='Dispo'; ">
+          <img [src]="dispo" alt="Borne de recharge" (click)="afficherDetailsBorne(borne)">
+          <p>Available</p>
+          <button class="btn btn-non-operational" (click)="setNonOperational(borne)"><b>Non Operational</b></button>
+        </ng-container>
+      <ng-container *ngIf="borne.etatB=='Reserver'; ">
+          <img [src]="occuper" alt="Borne de recharge" (click)="afficherDetailsBorne(borne)">
+          <div class="resGlowC"><p class="resGlow">Occupied</p></div>
+        </ng-container>
+      <ng-container *ngIf="borne.etatB=='EnPanne'; ">
+          <img [src]="panne" alt="Borne de recharge" (click)="afficherDetailsBorne(borne)">
+          <p>Out of order</p>
+          <button class="btn btn-operational" (click)="setOperational(borne)"><b>Operational</b></button><br>
+        </ng-container>
+
+      <!-- Buttons for operational and non-operational -->
+      
+  </div>
+
+  <!-- Popup de détails de la borne -->
+  <div class="popup" *ngIf="detailsBorne">
+      <div class="popup-content">
+          <span class="close" (click)="fermerPopup()">&times;</span>
+          <h2>Détails de la borne</h2>
+          <img [src]="detailsBorne.image" alt="Borne de recharge">
+          <p><strong>Disponibilité:</strong> {{ detailsBorne.disponibilite }}</p>
+          <p><strong>Emplacement:</strong> {{ detailsBorne.emplacement }}</p>
+          <p><strong>Modèle:</strong> {{ detailsBorne.modele }}</p>
+          <!-- Ajoutez d'autres détails de la borne ici -->
+      </div>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showOperational" (click)="closePopup($event)">
+  <div class="popupOP">
+    <h2 class="text-center">Terminal Operational</h2>
+    <p>Does this mean that the terminal is operational?</p>
+    <div class="mid">
+    <button type="button" class="btn btn-operationalx" (click)="Operational()">Operational</button>
+    <button type="button" class="btn btn-third" (click)="close()">Dismiss</button>
+    </div>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showNonOperational" (click)="closePopup($event)">
+  <div class="popupNOP">
+    <h2 class="text-center">Terminal Non Operational</h2>
+    <p>Does this mean that the terminal is non-operational?</p>
+    <div class="mid">
+    <button type="button" class="btn btn-non-operationalx" (click)="NonOperational()">Not Operational</button>
+    <button type="button" class="btn btn-third" (click)="close()">Dismiss</button>
+    </div>
+  </div>
+</div>
