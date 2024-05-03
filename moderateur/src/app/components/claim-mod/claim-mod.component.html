@@ -1,0 +1,67 @@
+<h1>Reclamation</h1>
+<div class="from-outline mt-3">
+    
+  </div>
+<div class="from-outline mt-3">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <!-- <th>Photo</th> -->
+          <th>Client</th>
+          <th>Born</th>
+          <th>Date de réception</th>
+          <th>Action</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let reclamation of listreclam.bigReclam">
+
+          <ng-container *ngIf="reclamation.client?.loginType === 'N'; else noLogin">
+            <td> {{ reclamation.client?.login }}</td>
+           </ng-container>
+           <ng-template #noLogin>
+             <td>{{ reclamation.client?.email }}</td>
+           </ng-template>
+
+          <td>{{ reclamation.born?.name}}</td>
+          <!-- <td><img [src]="img1" alt="Photo"></td> -->
+          <td>{{ reclamation.reclamation?.dateReclam| date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <!-- <td>{{ reclamation.born?.NumeroTel }}</td> -->
+          <td><button (click)="showDetails(reclamation)" style="height: 30px;width: 80px ;border-radius: 50px;background-color: rgba(65.66, 187.93, 35.10, 0.50);border: none;">View</button></td>
+        </tr> 
+      </tbody>
+    </table>
+    <!--pagination-->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end" >
+        <li class="page-item ">
+         <!--<a class="page-link">Previous</a>-->
+         <button class="page-link" (click)="Previous()">Previous</button>
+        </li >
+        <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+        <li class="page-item">
+          <!--<a class="page-link" href="#">Next</a>-->
+          <button class="page-link" (click)="next()">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+  <!-- Popup for Claim Details -->
+  <div class="popup-overlay" *ngIf="selectedReclamation" (click)="closePopup2($event)">
+    <div class="popup">
+      <h2>Message de la réclamation</h2>
+      <p> <img [src]="img1" alt="Photo"></p>
+      <p><strong>Nom du client:</strong> {{ selectedReclamation.client?.firstname }} {{ selectedReclamation.client?.lastname }}</p>
+      <p><strong>Date de réception:</strong>{{ selectedReclamation.reclamation?.dateReclam | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      <p><strong>Message de réclamation:</strong>{{ selectedReclamation.reclamation?.description }}</p>
+      <div class="btngroup">
+      <button class="fa fa-trash" (click)="deleteClaim()"></button>
+      <button class="fa fa-reply-all" (click)="replyToClaim()"></button>
+      <button (click)="closePopup()">close</button>
+      </div>
+    </div>
+  </div>
+  

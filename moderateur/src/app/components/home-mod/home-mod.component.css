@@ -1,0 +1,170 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.borne {
+  margin-left: 60px;
+  margin-top: 50px;
+  position: relative; /* Added position relative to enable button positioning */
+}
+
+.borne img {
+  width: 200px;
+  height: 300px;
+  border: 4px solid rgba(65.66, 187.93, 35.10, 0.50);
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.borne p {
+  font-size: large;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* ensure the popup is above other content */
+}
+
+.popupOP {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+  max-width: 400px; /* adjust based on your design */
+  max-height: 80%; /* adjust based on your design */
+  overflow-y: auto; /* enable scrolling if content exceeds container height */
+  z-index: 10000; /* ensure the main popup is below the success popup */
+  border: #42BC23 solid 4px;
+  animation: glowOP 1.5s ease-in-out infinite alternate; /* pulsating glow animation */
+}
+
+.popupNOP {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+  max-width: 400px; /* adjust based on your design */
+  max-height: 80%; /* adjust based on your design */
+  overflow-y: auto; /* enable scrolling if content exceeds container height */
+  z-index: 10000; /* ensure the main popup is below the success popup */
+  border: #ffc31f solid 4px;
+  animation: glowNOP 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowOP {
+  0% {
+    border-color: #42BC23; /* Initial border color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Initial box shadow */
+  }
+  100% {
+    border-color: #4CAF50; /* Pulsating border color */
+    box-shadow: 0 0 20px 15px rgba(65, 187, 35, 1); /* Pulsating box shadow */
+  }
+}
+
+@keyframes glowNOP {
+  0% {
+    border-color: #ffc31f; /* Initial border color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Initial box shadow */
+  }
+  100% {
+    border-color: #FFA500; /* Pulsating border color */
+    box-shadow: 0 0 20px 15px rgba(255, 193, 31, 1); /* Pulsating box shadow */
+  }
+}
+
+.btn {
+  padding: 10px 20px; /* Adjust padding for better button appearance */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.btn-operational {
+  background-color: #42BC23;
+  color: #fff;
+  border: none;
+  width: 100%;
+}
+
+.btn-non-operational {
+  background-color: #ffc31f;
+  color: #fff;
+  border: none;
+  width: 100%;
+}
+
+.btn:hover {
+  opacity: 0.8; /* Adjusted hover effect */
+}
+
+.btn-operationalx {
+  background-color: #42BC23;
+  color: #fff;
+  border: none;
+  width: 49%;
+}
+
+.btn-non-operationalx {
+  background-color: #ffc31f;
+  color: #fff;
+  border: none;
+  width: 49%;
+}
+
+.btn-third {
+  background-color: #a5a5a5;
+  color: #fff;
+  border: none;
+  width: 49%;
+  margin-left: 1.9%;
+}
+
+@keyframes glowing {
+  0% { text-shadow: 0 0 20px orange, 0 0 30px orange, 0 0 40px orange; color: orange; }
+  100% { text-shadow: 0 0 10px #42BC23, 0 0 20px #42BC23, 0 0 30px #42BC23; color: #42BC23; }
+}
+
+.resGlow {
+  animation: glowing 1.5s ease-in-out infinite alternate;
+}
+
+.resGlowC {
+  padding-top: 3%; /* Adjust padding for better button appearance */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 26%;
+  border: #42BC23 solid 2px;
+  height: 45px;
+  animation: glowX 1.5s ease-in-out infinite alternate;
+}
+@keyframes glowX {
+  0% {
+    border-color: #ffc31f; /* Initial border color */
+    box-shadow: 0 0 20px 5px #ffc31f; /* Initial box shadow */
+  }
+  100% {
+    border-color: #42BC23; /* Pulsating border color */
+    box-shadow: 0 0 20px 5px #42BC23; /* Pulsating box shadow */
+  }
+}

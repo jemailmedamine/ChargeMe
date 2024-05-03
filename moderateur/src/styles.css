@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin: 1.25rem 0;
+    box-shadow: 0 .25rem .5rem #e6edef;
+}
+
+.card-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1rem 1.5rem; 
+}
+
+@media (min-width: 576px) {
+    .card {
+        max-width: 540px;
+        margin: 1.25rem auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .card {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card {
+        max-width: 1140px;
+    }
+}
