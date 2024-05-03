@@ -1,0 +1,26 @@
+<h2>Modifier les détails du station</h2>
+
+<form (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="firstname">Prénom:</label>
+    <input type="text" class="form-control" id="firstname" [(ngModel)]="station.firstname" name="firstname" required>
+  </div>
+ <div class="form-group">
+    <label for="phone">Numéro de téléphone:</label>
+    <input type="text" class="form-control" id="phone" [(ngModel)]="station.phone" name="phone" required>
+  </div>
+  <div class="form-group">
+    <label for="address">Adresse:</label>
+    <input type="text" class="form-control" id="address" [(ngModel)]="station.address" name="address" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="status">Statut:</label>
+    <input type="text" class="form-control" id="status" [(ngModel)]="station.status" name="status" required>
+  </div>
+  <div class="form-group">
+    <label for="stationnum">Nombre de borne:</label>
+    <input type="number" class="form-control" id="stationnum" [(ngModel)]="station.bornenum" name="stationnum" required>
+  </div>
+  <button type="submit" class="btn ">Enregistrer </button>
+</form>

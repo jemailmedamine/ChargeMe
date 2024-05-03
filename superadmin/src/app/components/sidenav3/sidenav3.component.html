@@ -1,0 +1,24 @@
+<ng-container *ngIf="tokenIsExiste()">
+    <div class="sidenav" [ngClass]="collapsed ?  'sidenav-collapsed':''"> 
+        <div class="logo-container">
+          <button class="logo" (click)="toggleCollapse()"><i class="fa fa-bars"></i></button>
+          <div class="logo-text" *ngIf="collapsed"><img  [src]="image" style="width: 100;height: 30px;"></div>
+             <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+               <i class="fa fa-times close-icon"></i>
+              </button>
+        </div> 
+     
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navdata">
+            <a class="sidenav-nav-link" [routerLink]="[data.RouterLink]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">
+            <i class="sidenav-link.icon"[class]="data.icon"></i>
+            <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+        <br>
+    </ul>
+    </div>
+    </ng-container>
+    

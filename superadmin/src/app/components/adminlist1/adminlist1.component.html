@@ -1,0 +1,235 @@
+<h1>Admin</h1>
+<div class="from-outline mt-3 width: auto;">
+  <form>
+    
+    <input class="form-control" [(ngModel)]="email" list="datalistOptions" id="exampleDataList" name="exampleDataList" placeholder="Type to search..."
+      style="width: 300px;height: 35px;border-radius: 50px;">
+    <button type="button" class="btn btn-outline" (click)="filrage()" style="height: 35px; border-radius: 50px;background-color: #a0dd91;">
+      <i class="fa fa-filter" aria-hidden="true"></i> filter
+    </button>
+    <button type="button" class="btn btn-outline-create" (click)="openCreatePopup()"
+      style="border-radius: 50px;height: 35px;">
+      <i class="fa fa-plus" aria-hidden="true"></i>Create
+    </button>
+  </form>
+</div>
+<div class="table">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr routerLink="">
+        <th scope="col">Name</th>
+        <!-- <th scope="col">Phone number</th> -->
+        <th scope="col">Email</th>
+        <th scope="col">Zone</th>
+        <th scope="col">Number of Stations</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let admin of alladmin.admins">
+        <td>{{admin.admin?.firstname}} {{admin.admin?.lastname}}</td>
+
+        <!-- <td>{{admin.admin?.phone}}</td> -->
+        <td>{{admin.admin?.login}}</td>
+        <td>
+          <ol class="zone-list">
+            <li *ngFor="let zone of admin.zones; let i = index">{{ i + 1 }}. {{ zone }}</li>
+          </ol>          
+        </td>
+        <td>{{admin.stations?.length}}</td>
+        <td>{{admin.admin?.etat}}</td>
+        <td>
+          <button class="btn btn-outline" (click)="openDeletePopup(admin.admin?.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;
+          <button class="btn btn-outline" (click)="openEditPopup(admin.admin)"><i class="fa fa-pen" aria-hidden="true"></i></button>&nbsp;
+          <button class="btn btn-outline" (click)="call(admin.admin?.phone)"
+            style="width: 50px; height: 35px; border-radius: 50px;background-color: #a0dd91;margin-left: 7%;"><i
+              class="fa fa-phone" aria-hidden="true"></i></button>
+              <a href="mailto:{{admin.admin?.login}}"><button class="btn btn-outline-warning" (click)="sendEmail()"
+            style="width: 50px;height: 35px;border-radius: 50px;"><i class="fa fa-envelope"
+              aria-hidden="true"></i></button></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end margin-bottom-0">
+    <li class="page-item ">
+      <!--<a class="page-link">Previous</a>-->
+      <button class="page-link" (click)="Previous()">Previous</button>
+    </li>
+    <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+    <li class="page-item">
+      <!--<a class="page-link" >Next</a>-->
+      <button class="page-link" (click)="next()">Next</button>
+    </li>
+  </ul>
+</nav>
+
+<div class="popup-container" *ngIf="selectPhone" (click)="closePopup2($event)">
+  <div class="popupX">
+    <div class="title">
+      <i class="fa fa-phone icon pulsate"></i>
+      <div>
+        <h2>Phone Number:</h2>
+        <h3>{{selectPhone}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-container" *ngIf="showDeletePopup" (click)="closePopupDelete($event)">
+  <div class="popup" (click)="closePopupDelete($event)" >
+    <h2>Delete Admin</h2>
+    <p>Are you sure you want to delete this admin?</p>
+    <button type="button" class="btn btn-primary" (click)="deleteAdmin(showDeletePopup)">Yes, Delete</button>
+    <button type="button" class="btn btn-secondary ms-3" (click)="cancelDelete()">Cancel</button>
+  </div>
+</div>
+
+<div class="popup-container" *ngIf="showCreatePopup">
+  <div class="popup">
+    <h2>Create Admin</h2>
+    <form (submit)="submitCreateAdminForm($event)" #createAdminForm="ngForm">
+      <div class="row mb-3">
+        <div class="col">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="newAdmin.firstname" name="firstName" required>
+        </div>
+        <div class="col">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="newAdmin.lastname" name="lastName" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        
+        <div class="col">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="newAdmin.login" name="email" required #email="ngModel"  email >
+          <label id="alertexistmailcreat" style="color: red;display: none;"> This Email is existed</label>
+          <label id="alertmajuscr" style="color: red;display: none;"> An uppercase lettre</label>
+
+        </div>
+        <div class="col">
+          <label for="pwd" class="form-label">Password</label>
+          <input type="password" class="form-control" id="pwd" [(ngModel)]="newAdmin.password" name="pwd" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" [(ngModel)]="newAdmin.phone" name="phone" required>
+        </div>
+        <div class="col">
+          <label for="numberOfStations" class="form-label">Status</label>
+          <select class="form-select" id="status" [(ngModel)]="newAdmin.etat"  name="status" required>
+            <option value="actif" selected>actif</option>
+            <option value="inactif" >inactif</option>
+            <option value="deleted" >deleted</option>
+          </select>
+        </div>
+      </div><div class="row mb-3"> 
+        <div class="col">
+          <label for="latitude" class="form-label">Longitude</label>
+          <input type="text" pattern="[0-9]*\.?[0-9]+" class="form-control" id="longitude" [(ngModel)]="newAdmin.longitude" name="longitude"  required >
+        </div>
+        <div class="col">
+          <label for="latitude" class="form-label">Latitude</label>
+          <input type="text" pattern="[0-9]*\.?[0-9]+" class="form-control" id="latitude" [(ngModel)]="newAdmin.latitude" name="latitude"  required >
+       </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        <button type="submit" class="btn btn-primary" [disabled]="!createAdminForm.valid">Create</button>
+          <button type="button" class="btn btn-secondary ms-3" (click)="closeCreatePopup()">Cancel</button> <!-- Added ms-2 class for margin -->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////// -->
+<div class="popup-container" *ngIf="showEditPopup">
+  <div class="popup">
+    <h2>Edit Admin</h2>
+    <form (submit)="submitEditAdminForm($event)" #createAdminForm="ngForm">
+      <div class="row mb-3">
+        <div class="col">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="newAdmin.firstname" name="firstName" required>
+        </div>
+        <div class="col">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="newAdmin.lastname" name="lastName" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        
+        <div class="col">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="newAdmin.login" name="email" required  #email="ngModel" required email>
+          <label id="alertexistmailup" style="color: red;display: none;"> This Email is existed</label>
+          <label id="alertmajus" style="color: red;display: none;"> An uppercase lettre</label>
+
+        </div>
+        <div class="col">
+          <label for="pwd" class="form-label">Password</label>
+          <input type="password" class="form-control" id="pwd" [(ngModel)]="newAdmin.password" name="pwd" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" [(ngModel)]="newAdmin.phone" name="phone" required>
+        </div>
+        <div class="col">
+          <label for="numberOfStations" class="form-label">Status</label>
+          <select class="form-select" id="status" [(ngModel)]="newAdmin.etat"  name="status" required>
+            <option value="actif" selected>actif</option>
+            <option value="inactif" >inactif</option>
+            <option value="deleted" >deleted</option>
+          </select>
+        </div>
+      </div><div class="row mb-3">
+        <div class="col">
+          <label for="latitude" class="form-label">Longitude</label>
+          <input type="text" pattern="[0-9]*\.?[0-9]+" class="form-control" id="longitude" [(ngModel)]="newAdmin.longitude" name="longitude"  required >
+        </div>
+        <div class="col">
+          <label for="latitude" class="form-label">Latitude</label>
+          <input type="text" pattern="[0-9]*\.?[0-9]+" class="form-control" id="latitude" [(ngModel)]="newAdmin.latitude" name="latitude"  required >
+       </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        <button type="submit" class="btn btn-primary"  [disabled]="!createAdminForm.valid">Edit</button>
+          <button type="button" class="btn btn-secondary ms-3" (click)="closeEditPopup()">Cancel</button> <!-- Added ms-2 class for margin -->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showEditSuccessPopup">
+  <div class="popup">
+    <h2>Admin Edited!</h2>
+    <button type="button" class="btn btn-primary" (click)="closeEditPopup()">Dismiss!</button>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////// -->
+<div class="popup-container" *ngIf="showSuccessPopup">
+  <div class="popup">
+    <h2>Admin Created!</h2>
+    <button type="button" class="btn btn-primary" (click)="closeBothPopups()">Dismiss!</button>
+  </div>
+</div>
+<div>
+
+  <div class="popup-container" *ngIf="showDeleteSuccessPopup">
+    <div class="popup">
+      <h2>Admin Deleted!</h2>
+      <button type="button" class="btn btn-primary" (click)="closeDeleteSuccessPopup()">Dismiss</button>
+    </div>
+  </div>  
+</div>

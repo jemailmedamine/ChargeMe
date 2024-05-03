@@ -1,0 +1,31 @@
+<section>
+    <div class="cover">
+     <img [src]="image">
+    </div>
+     <div class="content">
+      <div class="logo"><img [src]="image">
+      </div>
+      <div class="formBx">
+        <h2>{{space}} Space </h2>
+        <form> 
+          <div class="inputBx">
+            <span>Username</span>
+            <input type="text" id="login" required [(ngModel)]="admin.login" name="login" >
+          </div>
+          <div class="inputBx">
+            <span>Password</span>
+            <input type="password" id="password" required [(ngModel)]="admin.password"  name="password"> 
+          </div>
+          <!-- <div class="remember">
+          <label><input type="checkbox" name="">Remember me</label>
+          </div> -->
+          <div class="remember">
+            <label id="alert" style="color: red;display: none;">Please check your cords</label>
+            </div>
+            <div class="inputBx">
+            <input type="submit" [routerLink]="" (click)="login()" value="LogIn" name="" > 
+          </div>
+        </form>
+      </div>
+     </div>
+  </section>

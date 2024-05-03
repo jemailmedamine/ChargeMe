@@ -1,0 +1,109 @@
+<h1>Reservation</h1>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Photo</th>
+    <th>Name</th> 
+    <th>Numéro de téléphone</th>
+    <th>Date de réservation</th>
+    <th>State</th>
+    <th>Period</th>
+    <th>Station</th>
+    <th>Born</th> 
+    <th>Actions</th>
+  </tr>
+  <tbody>
+    <ng-container *ngFor="let reservation of listreserv.listeResev; let i = index">
+      <tr>
+        <td><img [src]="img1" alt="Photo de l'utilisateur"></td>
+        <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
+        <td>{{ reservation.phone }}</td>
+        <td>{{reservation.dateReservation | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>
+          <ng-container *ngIf="reservation.etat == 'Terminer';">
+            Finish
+          </ng-container>
+          <ng-container *ngIf="reservation.etat == 'Annuler';">
+            Cancel
+          </ng-container>
+          <ng-container *ngIf="reservation.etat == 'EnCour';">
+            In progress
+          </ng-container></td>
+        <td>{{ reservation.period }}</td>
+        <td>{{ reservation.Born_name }}</td> 
+        <td>{{ reservation.Born_Station_name }}</td> 
+        <td>
+          <button class="btn fa fa-trash" (click)="supprimerReservation(reservation)"></button>
+          <!-- <button class="btn fa fa-pen" (click)="modifierReservation(reservation)"></button> -->
+          <button class="btn fa fa-eye" (click)="showDetail(reservation)"></button>
+        </td>
+      </tr>
+      <!-- Details row -->
+      <tr *ngIf="reservationToShowDetails === reservation">
+        <td colspan="3">
+          <div>
+            <h3>Details:</h3>
+            <p>Owner Name: {{ reservation.firstname }}</p>
+            <p>Station Name: {{ reservation.Born_Station_name }} </p>
+            <p>Station Address: {{ reservation.Born_Station_adresse }} </p>
+          </div>
+        </td>
+        <td colspan="5">
+          <div>
+            <p>Connector Type: {{ connecteur.libelle }}</p>
+            <p>Charge Type: {{ chargeType.name }} </p>
+            <!-- Add more details as needed -->
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+  
+</table>
+
+<!--pagination-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end" >
+    <li class="page-item ">
+     <!--<a class="page-link">Previous</a>-->
+     <button class="page-link" (click)="Previous()">Previous</button>
+    </li >
+    <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+    <li class="page-item">
+      <!--<a class="page-link" href="#">Next</a>-->
+      <button class="page-link" (click)="next()">Next</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- Popup de modification -->
+<div class="modal" *ngIf="showPopup">
+  <div class="modal-content">
+    <span class="close" (click)="fermerPopup()">&times;</span>
+    <h2>Modifier la réservation</h2>
+    <form>
+      <!-- Ajoutez les champs du formulaire ici -->
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" name="nom" [(ngModel)]="reservationModifiee.nom">
+      <!-- Ajoutez d'autres champs du formulaire pour les autres propriétés de la réservation -->
+      <button type="submit" class="btn btn-success">Enregistrer</button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showDeletePopup" (click)="closePopupDelete($event)">
+  <div class="popup">
+    <h2>Delete Reservation</h2>
+    <p>Are you sure you want to delete this reservation?</p>
+    <div class="button-container">
+      <button type="button" class="btn btn-primary" (click)="deleteSucc(showDeletePopup)">Yes, Delete</button>
+      <button type="button" class="btn btn-secondary ms-3" (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showDeleteSuccessPopup">
+  <div class="popup">
+    <h2>Reservation Deleted</h2>
+    <button type="button" class="btn btn-primary" (click)="fermerSuccessPopup()">Dismiss!</button>
+  </div>
+</div>

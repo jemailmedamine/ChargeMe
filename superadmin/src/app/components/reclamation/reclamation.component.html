@@ -1,0 +1,139 @@
+<h1>Claim</h1>
+<div class="from-outline mt-3">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>login emitter</th>
+          <th>Role</th>
+          <th>Born</th>
+          <th>Station Name</th> 
+          <th>Date de réception</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of listreclam.listReclamSuper">
+          <td><img [src]="img1" alt="Photo"></td>
+
+          <ng-container *ngIf="element?.reclamation?.ClientId; else noClient">
+            <ng-container *ngIf="element.client?.loginType === 'N'; else noLogin">
+             <td> {{ element.client?.login }}</td>
+            </ng-container>
+            <ng-template #noLogin>
+              <td>{{ element.client?.email }}</td>
+            </ng-template>
+            <td>Client</td>
+          </ng-container> 
+          <ng-template #noClient>
+
+            <ng-container *ngIf="element.reclamation?.ModerateurId; else noModerateur">
+              <td>{{ element?.moderateur?.login }}</td>
+            <td>moderateur</td>
+             </ng-container>
+             <ng-template #noModerateur>
+              <!--  traitement owner  -->
+              <ng-container *ngIf="element?.reclamation?.ProprietaireId; else noOwner">
+                <ng-container *ngIf="element.owner?.loginType; else noLogin">
+                 <td> {{ element.owner?.login }}</td>
+                </ng-container>
+                <ng-template #noLogin>
+                  <td>{{ element.owner?.email }}</td>
+                </ng-template>
+                <td>Owner</td>
+              </ng-container> 
+              <ng-template #noOwner>
+    
+                <ng-container *ngIf="element.reclamation?.AdminId; ">
+                  <td>{{ element?.admin?.login }}</td>
+                <td>Admin</td>
+                 </ng-container>
+                 
+              </ng-template>
+              <!------------------------->
+             </ng-template>
+          </ng-template>
+
+
+          <td>{{ element.born?.name}}</td>
+          <td>{{ element.station?.name}}</td>
+          <td>{{ element.reclamation?.dateReclam | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td><button (click)="showDetails(element)"
+            style="height: 30px;width: 80px ;border-radius: 50px;
+            background-color: rgba(65.66, 187.93, 35.10, 0.50);border: none;">
+            View
+            </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" >
+      <li class="page-item ">
+       <!--<a class="page-link">Previous</a>-->
+       <button class="page-link" (click)="Previous()">Previous</button>
+      </li >
+      <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+      <li class="page-item">
+        <!--<a class="page-link" href="#">Next</a>-->
+        <button class="page-link" (click)="next()">Next</button>
+      </li>
+    </ul>
+  </nav>
+  <!-- Popup for Claim Details -->
+  <div class="popup-overlay" *ngIf="selectedReclamation" (click)="closePopup2($event)">
+    <div class="popup">
+      <h2>Message de la réclamation</h2>
+      <!-- <p> <img [src]="img1" alt="Photo"></p> -->
+      
+      <ng-container *ngIf="selectedReclamation?.reclamation?.ClientId; else noClient">
+        <p> <img [src]="img1" alt="Photo"></p>
+        <p><strong>Nom du client:</strong> {{ selectedReclamation.client?.firstname }} {{ selectedReclamation.client?.lastname }}</p>
+      </ng-container>
+      <ng-template #noClient>
+
+        <ng-container *ngIf="selectedReclamation.reclamation?.ModerateurId; else noModerateur">
+          <p> <img [src]="img1" alt="Photo"></p>
+          <p><strong>Nom du moderateur:</strong> {{ selectedReclamation.moderateur?.firstname }} {{ selectedReclamation.moderateur?.lastname }}</p>
+         </ng-container>
+         <ng-template #noModerateur>
+          <!--  traitement owner zzzzz -->
+          <ng-container *ngIf="selectedReclamation?.reclamation?.ProprietaireId; else noOwner">
+            <p> <img [src]="img1" alt="Photo"></p>
+            <p><strong>Nom du Proprietaire:</strong> {{ selectedReclamation.owner?.firstname }} {{ selectedReclamation.owner?.lastname }}</p>
+          </ng-container>
+          <ng-template #noOwner>
+            <ng-container *ngIf="selectedReclamation.reclamation?.AdminId; else noAdmin">
+              <p> <img [src]="img1" alt="Photo"></p>
+              <p><strong>Nom du Admin:</strong> {{ selectedReclamation.admin?.firstname }} {{ selectedReclamation.admin?.lastname }}</p>
+             </ng-container>
+             <ng-template #noAdmin>
+             </ng-template>
+          </ng-template>
+        </ng-template>
+      </ng-template>
+
+
+      <p><strong>Date de réception:</strong> {{ selectedReclamation.reclamation?.dateReclam | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      <p><strong>Message de réclamation:</strong> {{ selectedReclamation.reclamation?.description }}</p>
+      <div class="btngroup">
+      <button class="fa fa-trash" (click)="deleteClaim( selectedReclamation.reclamation?.id)"></button>
+      <!-- <button class="fa fa-reply-all" (click)="replyToClaim()"></button> -->
+      <button (click)="closePopup()">close</button>
+      </div>
+    </div>
+  </div>
+  <div class="popup-container" *ngIf="showDeletePopup" (click)="closePopupDelete($event)">
+    <div class="popup">
+      <h2>Delete Claim</h2>
+      <p>Are you sure you want to delete this Claim?</p>
+      <div class="button-container">
+        <button type="button" class="btn btn-primary" (click)="deleteReclam(showDeletePopup)">Yes, Delete</button>
+        <button type="button" class="btn btn-secondary ms-3" (click)="cancelDelete()">Cancel</button>
+      </div>
+    </div>
+  </div> 
+  
+  

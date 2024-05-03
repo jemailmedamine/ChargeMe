@@ -1,0 +1,244 @@
+.user span{
+  color: #42BC23;
+  border: solid 2px #42BC23;
+  border-radius: 50%;
+  padding: 3px;
+  margin-right: 10px;
+  position: relative;
+  left: 85%;
+  margin-top: 10px;
+  
+}
+.table{
+  margin-top: 50px;
+}
+.admin-actions{
+  display: flex;
+  
+}
+/* adminlist1.component.css */
+
+/* adminlist1.component.css *//* CSS */
+.from-outline form {
+  display: flex;
+  align-items: left;
+}
+
+.user span {
+  color: #42bc23;
+  border: solid 2px #42bc23;
+  border-radius: 50%;
+  padding: 3px;
+  margin-right: 10px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Media Query for smaller screens */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .from-outline form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .from-outline form input,
+  .from-outline form button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .popup {
+    max-width: 90%; /* Adjusted max-width for smaller screens */
+  }
+
+  .popup-container,
+  .popup-container-success {
+    padding: 10px; /* Added padding for better spacing on smaller screens */
+  }
+
+  .popup-container-success {
+    z-index: 10001; /* Ensure the success popup is above other content */
+  }
+}
+
+
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* ensure the popup is above other content */
+}
+
+
+.popup-container-success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* ensure the success popup is above other content */
+}
+
+ul {
+padding: 0%;
+text-align: left;
+}
+
+.popup-success {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+  max-width: 400px; /* adjust based on your design */
+  width: 100%;
+  max-height: 80%; /* adjust based on your design */
+  overflow-y: auto; /* enable scrolling if content exceeds container height */
+}
+
+.btn-outline-create {
+--color: #a0dd91;
+max-width: 20%;
+font-family: inherit;
+position: relative;
+overflow: hidden;
+border: 2px solid var(--color);
+transition: color .5s;
+z-index: 1;
+font-size: 17px;
+border-radius: 6px;
+color: #075a2d;
+align-items: center;
+align-content: center;
+justify-content: center;
+display: flex;
+}
+
+.btn-outline-create:before {
+content: "";
+position: absolute;
+z-index: -1;
+background: var(--color);
+height: 150px;
+width: 200px;
+border-radius: 50%;
+}
+
+.btn-outline-create:hover {
+color: #075a2d;
+}
+
+.btn-outline-create:before {
+top: 100%;
+left: 100%;
+transition: all .7s;
+background-color: #ffc107;
+}
+
+.btn-outline-create:hover:before {
+top: -30px;
+left: -30px;
+}
+
+.btn-outline-create:active:before {
+background: #42bc23;
+transition: background 0s;
+}
+
+.popupX {
+background-color: #F3FFF7;
+border-radius: 10px;
+border: 3px solid;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(10px);
+max-width: 400px;
+width: 100%;
+max-height: 80%;
+overflow-y: auto;
+animation: borderAnimate 2s infinite alternate;
+}
+
+.popup {
+background-color: #ffffff;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(10px);
+max-width: 400px;
+width: 100%;
+max-height: 80%;
+overflow-y: auto;
+}
+
+@keyframes borderAnimate {
+0% {
+  border-color: #42BC23;
+}
+100% {
+  border-color: #FFC107;
+}
+}
+
+.title {
+display: flex;
+align-items: center;
+color: #42BC23;
+}
+
+.icon.pulsate {
+animation: pulsate 2s infinite alternate;
+}
+
+@keyframes pulsate {
+0% {
+  opacity: 0;
+  color: #42BC23;
+}
+100% {
+  opacity: 1;
+  color: #FFC107;
+}
+}
+.popupX h2,
+.popupX h3 {
+color: #42BC23;
+animation: colorAnimate 2s infinite alternate;
+}
+
+@keyframes colorAnimate {
+0% {
+  color: #42BC23;
+}
+100% {
+  color: #FFC107;
+}
+}
+.icon {
+font-size: 23px;
+margin-right: 10px;
+margin-bottom: 47px;
+animation: colorAnimate 1.5s infinite alternate;
+}
+.zone-list {
+  list-style-type: none;
+}

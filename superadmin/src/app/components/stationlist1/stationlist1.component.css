@@ -1,0 +1,168 @@
+.from-outline form {
+    display: flex;
+    align-items: left;
+}
+@media (max-width: 768px) {
+    .from-outline form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .from-outline form input,
+    .from-outline form button {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+.table{
+    margin-top: 50px;
+}
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* ensure the popup is above other content */
+}
+
+.popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+    max-width: 400px; /* adjust based on your design */
+    width: 100%;
+    max-height: 80%; /* adjust based on your design */
+    overflow-y: auto; /* enable scrolling if content exceeds container height */
+    z-index: 10000; /* ensure the main popup is below the success popup */
+}
+
+.popup-container-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* ensure the success popup is above other content */
+}
+
+.popup-success {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+    max-width: 400px; /* adjust based on your design */
+    width: 100%;
+    max-height: 80%; /* adjust based on your design */
+    overflow-y: auto; /* enable scrolling if content exceeds container height */
+}
+.multiselect {
+    width: 200px;
+  }
+  
+  .selectBox {
+    position: relative;
+  }
+  
+  .selectBox select {
+    width: 100%;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+    z-index: 99999;
+  }
+  
+  .checkboxes label {
+    display: block;
+  }
+  
+  .checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+
+  #checkboxes2 {
+    display: none;
+    border: 1px #dadada solid;
+    z-index: 99999;
+  }
+  
+  #checkboxes2 label {
+    display: block;
+  }
+  
+  #checkboxes2 label:hover {
+    background-color: #1e90ff;
+  }
+
+  .btn-outline-create {
+    --color: #a0dd91;
+    max-width: 20%;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    color: #075a2d;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+   }
+   
+   .btn-outline-create:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+  
+   .btn-outline-create:hover {
+    color: #075a2d;
+   }
+   
+   .btn-outline-create:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+    background-color: #ffc107;
+   }
+   
+   .btn-outline-create:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+   
+   .btn-outline-create:active:before {
+    background: #42bc23;
+    transition: background 0s;
+   }
+
+   .xbtn:active {
+    transform: translateY(4px);
+   }

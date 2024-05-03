@@ -1,0 +1,175 @@
+*{
+    max-width: 100%;
+}
+
+.bodytokn {
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    position: relative;
+    top: 0px;
+    transition: all .5s ease;
+    padding-left: 7rem;
+    padding-right: 2.5rem;
+    padding-top: 2rem; 
+
+}
+.bodynntokn {
+
+        width: 100%;
+        height: 100vh;
+        z-index: 0;
+        position: relative;
+        top: 0px;
+        transition: all .5s ease;
+}
+
+
+
+@media only screen and (max-width: 583px) {
+    .body {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        position: relative;
+        top: 0px;
+        transition: all .5s ease;
+    }
+    .bodytokn {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        position: relative;
+        top: 0px;
+        transition: all .5s ease;
+    }
+    .bodynntokn {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        position: relative;
+        top: 0px;
+        transition: all .5s ease;
+    }
+  }
+
+.body-trimmed {
+    width: calc(100% - 16rem);
+    margin-left: 16rem;
+}
+
+.body-md-screen {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    background-color: transparent;
+}
+
+.user {
+    position: fixed; /* Fixed positioning to keep it in place */
+    top: 10px; /* Adjusted positioning */
+    right: 10px; /* Adjusted positioning */
+    z-index: 9999; /* Set a higher z-index to ensure it stays on top */
+}
+
+.user span {
+    color: rgb(13, 43, 5); /* Adjusted color */
+    margin-right: 10px;
+}
+
+.brand {
+    height: 50px;
+}
+
+.user img {
+    width: 200px;
+    height: 50px;
+}
+.bg
+{
+    background: linear-gradient(180deg, rgba(208,208,208,1) 0%,
+    rgba(255,255,255,1) 27%, rgba(208,208,208,1) 52%,
+    rgba(255,255,255,1) 75%, rgba(208,208,208,1) 100%);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: auto;
+}
+
+.btnx {
+    color: #404b06;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 50px;
+    padding: 4px 12px;
+    background-color:  #a0dd91;
+    font-weight: bold;
+   }
+   
+   .btnx:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+  
+   .btnx:hover {
+    color: #075a2d;
+   }
+   
+   .btnx:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+    background-color: #f7b21e;
+   }
+   
+   .btnx:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+   
+   .btnx:active:before {
+    background: #2d9e10;
+    transition: background 0s;
+   }
+
+   .popup-containerX {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* ensure the popup is above other content */
+}
+
+.popupX {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* drop shadow */
+    max-width: 400px; /* adjust based on your design */
+    width: 100%; /* occupy full width */
+    max-height: 80%; /* adjust based on your design */
+    overflow-y: auto; /* enable scrolling if content exceeds container height */
+    z-index: 10000; /* ensure the main popup is below the success popup */
+    position: absolute;
+    top: 50px; /* Adjust the top position to place it below the user icon */
+    right: 10px; /* Adjust the right position to align it properly */
+}
+

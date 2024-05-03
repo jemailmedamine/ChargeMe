@@ -1,0 +1,45 @@
+<div class="return" >
+    <a href="" routerLink="/stationlist"><i class="fa fa-chevron-left" aria-hidden="true"></i>back</a></div>
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col">
+                <label for="inputemail" class="col-form-label">Station name</label>
+                <input type="text" class="form-control" formControlName="firstname" placeholder="First name"
+                    aria-label="First name">
+            </div>
+            <div class="col">
+                <label for="inputadress" class="col-form-label">Adress</label>
+                <input type="text" class="form-control" id="inputAddress2" formControlName="adress"
+                    placeholder="Apartment, studio, or floor">
+            </div>
+        </div>
+        <div class="row " [formGroup]="contactform">
+            <div class="col">
+                <label for="inputterminal" class="form-label">Number of terminal</label>
+                <input type="number" class="form-control" id="inputterminal" formControlName="terminal">
+            </div>
+           
+            <div class="col">
+                <label for="inputAddress" class="form-label">Phone nummber </label>
+                <input type="number" class="form-control" id="inputAddress" formControlName="phonenumber"
+                    placeholder="1234 Main St">
+            </div>
+            <div class="row " [formGroup]="contactform"></div>
+            <div class="col">
+                <label for="inputlong" class="form-label">longitude </label>
+                <input type="number" class="form-control" id="inputlong" formControlName="longitude"
+                    placeholder="0000">
+            </div>
+            <div class="col">
+                <label for="inputlat" class="form-label">latitude </label>
+                <input type="number" class="form-control" id="inputlat" formControlName="latitude"
+                    placeholder="0000">
+            <div class="text-end">
+                <button type="submit" class="btn " >submit</button>
+            </div>
+          </div>
+
+
+    </div>
+

@@ -1,0 +1,90 @@
+h1{
+    margin-top: 50px;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted for responsiveness */
+    grid-gap: 2rem; /* Reduced gap for better responsiveness */
+}
+
+.card {
+    width: 100%; /* Adjusted for responsiveness */
+    background: #fff;
+    display: grid;
+    place-items: end;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem; /* Added padding for better spacing */
+}
+
+.card-icon span {
+    height: 50px;
+    width: 50px;
+    color: #42BC23;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    border: solid 3px #42BC23;
+    border-radius: 40px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1)); /* Adjusted drop shadow */
+}
+
+.follow span {
+    color: #fff;
+    background: #42BC23;
+}
+
+.mod span {
+    color: #303334;
+    background: orange;
+}
+
+.likes span {
+    color: #303334;
+    background-color: orange;
+}
+
+.comment span {
+    color: #fff;
+    background: #42BC23;
+}
+
+.card-info {
+    position: absolute;
+    top: 10px; /* Adjusted positioning */
+    left: 10px; /* Adjusted positioning */
+}
+
+.card-info h1 {
+    font-size: 1rem;
+}
+
+.card-info small {
+    display: inline-block;
+    color: #42BC23;
+    font-weight: 300;
+}
+
+.card-images {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    margin-left: 0;
+}
+
+.card-images img {
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: solid 4px #fff;
+    margin-left: -15px;
+}
+
+.card-images div:first-child {
+    margin-left: 0;
+}
+
+.table {
+    margin-top: 50px;
+}

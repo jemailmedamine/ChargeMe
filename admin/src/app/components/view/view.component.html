@@ -1,0 +1,15 @@
+<div class="admin-details" *ngIf="adminDetails">
+    <div class="admin-actions">
+      <h2>Détails de l'administrateur</h2>
+      <button class="btn btn-outline" (click)="onCall()" style="width: 50px; height: 35px; border-radius: 50px;background-color: #a0dd91;margin-left: 7%;"><i class="fa fa-phone" aria-hidden="true"></i></button>
+      <button class="btn btn-outline-warning" (click)="onSendEmail()" style="width: 50px;height: 35px;border-radius: 50px;"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+    </div>
+    <div>
+      <p><strong>Nom complet:</strong> {{ adminDetails.firstname }} {{ adminDetails.lastname }}</p>
+      <p><strong>Téléphone:</strong> {{ adminDetails.phone }}</p>
+      <p><strong>Adresse:</strong> {{ adminDetails.address }}</p>
+      <p><strong>Zone:</strong> {{ adminDetails.zone }}</p>
+      <p><strong>Statut:</strong> {{ adminDetails.status }}</p>
+    </div>
+  </div>
+  

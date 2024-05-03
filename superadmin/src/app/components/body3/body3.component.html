@@ -1,0 +1,52 @@
+<div class="bg">
+  <div class="user" > 
+    <ng-container *ngIf="tokenIsExiste()">
+      <!-- <span class="btn fas fa-bell "  style="margin-right: 10px;color: black;border: none;">
+          <span class="position-absolute top-0 start-90 translate-middle p-1 bg-danger border border-light rounded-circle">
+          </span>
+        </span> -->
+        <span class="btn fas fa-user" (click)="openProfilePopup()" style="margin-right: 10px;" ></span>
+          <button class="btnx" routerLink="/loginsuper" (click)="logout()" style="margin-right: 10px; border: none; ">logout</button>
+        </ng-container>
+        </div>
+  <ng-container *ngIf="tokenIsExiste(); else elseBlock">
+  <div class="bodytokn" [ngClass]="getBodyClass()" >  
+  <router-outlet></router-outlet>
+  </div>
+  </ng-container>
+  <ng-template #elseBlock>
+    <div>
+      <div class="bodynntokn" [ngClass]="getBodyClass()" > 
+        <router-outlet></router-outlet>
+        </div>
+    </div>
+  </ng-template>
+  </div>
+
+
+  <div class="popup-containerX" *ngIf="showProfilePopup">
+    <div class="popupX">
+      <h2>Update Profile</h2>
+      <div class="col">
+        <label for="userLogin" class="form-label">Login</label>
+        <input type="test" class="form-control" id="userLogin" [(ngModel)]="admin.login" name="userLogin" required>
+      </div>
+      <div class="col">
+        <label for="userPass" class="form-label">Password</label>
+        <input type="password" class="form-control" id="userPass" [(ngModel)]="admin.password" name="userPass" required>
+      </div>
+      <br />
+      <button type="button" class="btn btn-primary" (click)="UpdateProfilePopup()">Update</button>
+      <button type="button" class="btn btn-secondary ms-3" (click)="closeProfilePopup()">Dismiss</button>
+    </div>
+  </div>
+
+  <div class="popup-containerX" *ngIf="showUpdateProfilePopup">
+    <div class="popupX">
+      <h2>Profile Updated</h2>
+      <button type="button" class="btn btn-primary" (click)="closeUpdateProfilePopup()">Dismiss</button>
+    </div>
+  </div>
+
+
+  

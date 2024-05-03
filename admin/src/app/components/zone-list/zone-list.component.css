@@ -1,0 +1,24 @@
+h1{
+    margin-top: 50px;
+}
+.from-outline form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 30%;
+}
+
+.from-outline form > * {
+    flex: 0 0 auto;
+}
+
+@media (max-width: 576px) {
+    .from-outline form > * {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+}
+
+
+.table{
+    margin-top: 50px;
+}

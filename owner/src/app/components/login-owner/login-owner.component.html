@@ -1,0 +1,65 @@
+<section>
+    <div class="cover">
+     <img [src]="image">
+  
+    </div>
+     <div class="content">
+      <div class="logo"><img [src]="image"></div>
+      <div class="formBx">
+        <h2>Owner Space  </h2>
+        <form>
+          <div class="inputBx">
+            <span>Username</span> 
+            <input type="text" id="login" required [(ngModel)]="owner.login" name="login" >
+          </div>
+          <div class="inputBx"> 
+            <span>Password</span>
+            <input type="password" id="password" required [(ngModel)]="owner.password" name="password">
+          </div>
+          <!-- <div class="remember">
+          <label><input type="checkbox" name="">Remember me</label>
+          </div> -->
+          <div class="remember">
+            <label id="alert" style="color: red;display: none;">Please check your cords</label>
+            <label id="blocked" style="color: red;display: none;">this personne is blocked!!</label>
+            </div>
+          <div class="inputBx">
+            
+            <input type="submit" [routerLink]="" (click)="login()" value="Sign in" name="">
+          </div>
+          <p>Don't have an account?&nbsp;<a href="/SinUp"><span style="color:#42BC23 ;" routerLink='SignUp'>Sign Up</span></a></p>
+        </form>
+  <br />
+        <u><h3 class="text-center">Login with social media</h3></u>
+        <br />
+        <ul class="sci">
+          <li (click)="showVerificationPopup = true">
+            <img [src]="facebook">
+          </li>
+          <li>
+            <img [src]="apple">
+          </li>
+          <li>
+            <img [src]="google">
+          </li>
+          <li>
+            <img [src]="twitter">
+          </li>
+        </ul>
+      </div>
+     </div>
+  </section>
+<!-- Verification Popup -->
+<div class="popup-container" *ngIf="showVerificationPopup">
+  <div class="popup">
+    <!-- Close button -->
+    <button class="close-btn" (click)="closePopup()">X</button>
+    <!-- Verification code input field -->
+    <input class="verif" type="text" [(ngModel)]="verificationCode" placeholder="Verification Code"><br/><br/>
+    <label id="alertreg" style="color: #6c757d;display: none;">The code has been regenerated"</label>
+    <label id="alertival" style="color: red;display: none;">This code is invalide ,Please regenerate the verification code "</label>
+    <!-- Regenerate and Confirm buttons -->
+    <button class="btn btn-secondary" (click)="regenerate() ">Regenerate</button>
+    <button class="btn btn-primary ms-3" (click)="confirm()">Confirm</button>
+  </div>  
+</div>

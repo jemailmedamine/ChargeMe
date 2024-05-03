@@ -1,0 +1,187 @@
+<h1>History</h1>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Date</th>
+      <th>Personne</th> 
+      <th>Born</th> 
+      <th>Station</th>
+      <!-- <th>Heure</th> -->
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hist of listhist.historiques">
+      <td><img [src]="img1" alt="Photo de l'utilisateur" height="50"></td>
+      <td>{{ hist.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+      <td>{{ hist.personne }}</td>
+      <td>{{ hist.bornName }}</td>
+      <td>{{ hist.stationName }}</td>
+      <!-- <td>{{ reservation.heure }}</td> -->
+      <td>
+        <button class="btn fa fa-trash" (click)="supprimerReservation(hist)"></button>
+        <!-- <button class="btn fa fa-pen" (click)="modifierReservation(hist)"></button> -->
+        <button class="btn fa fa-eye" (click)="showHistoryDetailsPopup(hist)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!--pagination-->
+<nav aria-label="Page navigation example"> 
+  <ul class="pagination justify-content-end" >
+    <li class="page-item ">
+     <!--<a class="page-link">Previous</a>-->
+     <button class="page-link" (click)="Previous()">Previous</button>
+    </li >
+    <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+    <li class="page-item">
+      <!--<a class="page-link" href="#">Next</a>-->
+      <button class="page-link" (click)="next()">Next</button>
+    </li>
+  </ul>
+</nav>
+<!-- Popup de modification -->
+<div class="modal" *ngIf="showPopup">
+  <div class="modal-content">
+    <span class="close" (click)="fermerPopup()">&times;</span>
+    <h2>Modifier la réservation</h2>
+    <form>
+      <!-- Ajoutez les champs du formulaire ici -->
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" name="nom" [(ngModel)]="reservationModifiee.nom">
+      <!-- Ajoutez d'autres champs du formulaire pour les autres propriétés de la réservation -->
+      <button type="submit" class="btn btn-success">Enregistrer</button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showDetailsPopup" (click)="closePopupDetails($event)">
+  <div class="popup">
+    <h2>History Details</h2><br/>
+    <div class="details-container">
+      <div class="left-details">
+        <p><strong>Start Date:</strong><br> {{ selectedHistoryDetails.dateDebut | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+        <p><strong>Person:</strong> {{ selectedHistoryDetails.personne }}</p>
+        <p><strong>Station Name:</strong> {{ selectedHistoryDetails.stationName }}</p>
+        <!-- <p><strong>Plug Type:</strong> {{ selectedHistoryDetails.typeConnecteur }}</p> -->
+        <p><strong>Revenue Net:</strong> {{ selectedHistoryDetails.revenueNet }}</p>
+        <p><strong>Revenue ChargeMe:</strong> {{ selectedHistoryDetails.revenueChargeMe }}</p>
+        <p><strong>Updated At:</strong><br> {{ selectedHistoryDetails.updatedAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      </div>
+      <div class="right-details">
+        <p><strong>End Date:</strong><br> {{ selectedHistoryDetails.dateFin | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+        <p><strong>Login:</strong> {{ Email }}</p>
+        <p><strong>Born:</strong> {{ selectedHistoryDetails.bornName }}</p>
+        <p><strong>consumption per KW:</strong> {{ selectedHistoryDetails.consomationKW }}</p>
+        <p><strong>Revenue Total:</strong> {{ selectedHistoryDetails.revenueTot }}</p>
+        <p><strong>Revenue Owner:</strong> {{ selectedHistoryDetails.revenueOwner }}</p>
+        <p><strong>Created At:</strong><br> {{ selectedHistoryDetails.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="closeDetailsPopup()">Dismiss</button>
+  </div>
+</div>
+<!-- Edit Form -->
+<div class="popup-container" *ngIf="showEditForm">
+  <div class="popup-1">
+    <h2>Edit History</h2>
+    <form (ngSubmit)="fermerPopup()">
+      <div class="form-container">
+        <div class="left-form">
+          <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="text" id="startDate" name="startDate" [(ngModel)]="editedHistory.startDate" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="person">Person:</label>
+            <input type="text" id="person" name="person" [(ngModel)]="editedHistory.person" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="stationName">Station Name:</label>
+            <input type="text" id="stationName" name="stationName" [(ngModel)]="editedHistory.stationName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="plugType">Plug Type:</label>
+            <input type="text" id="plugType" name="plugType" [(ngModel)]="editedHistory.plugType" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="revenueNet">Revenue Net:</label>
+            <input type="text" id="revenueNet" name="revenueNet" [(ngModel)]="editedHistory.revenueNet" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="revenueChargeMe">Revenue ChargeMe:</label>
+            <input type="text" id="revenueChargeMe" name="revenueChargeMe" [(ngModel)]="editedHistory.revenueChargeMe" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="updatedAt">Updated At:</label>
+            <input type="text" id="updatedAt" name="updatedAt" [(ngModel)]="editedHistory.updatedAt" class="form-control">
+          </div>
+        </div>
+        <div class="right-form">
+          <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="text" id="endDate" name="endDate" [(ngModel)]="editedHistory.endDate" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="editedHistory.username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="born">Born:</label>
+            <input type="text" id="born" name="born" [(ngModel)]="editedHistory.born" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="chargeType">Charge Type:</label>
+            <input type="text" id="chargeType" name="chargeType" [(ngModel)]="editedHistory.chargeType" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="revenueTotal">Revenue Total:</label>
+            <input type="text" id="revenueTotal" name="revenueTotal" [(ngModel)]="editedHistory.revenueTotal" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="revenueOwner">Revenue Owner:</label>
+            <input type="text" id="revenueOwner" name="revenueOwner" [(ngModel)]="editedHistory.revenueOwner" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="createdAt">Created At:</label>
+            <input type="text" id="createdAt" name="createdAt" [(ngModel)]="editedHistory.createdAt" class="form-control">
+          </div>
+        </div>
+      </div>
+      <!-- Add other fields as needed -->
+      <button type="submit" class="btn btn-primary" (click)="successPopup()">Save</button>
+      <button type="button" class="btn btn-secondary ms-3" (click)="fermerPopup()">Cancel</button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showEditSuccessPopup">
+  <div class="popup">
+    <h2>History Edited!</h2>
+    <button type="button" class="btn btn-primary" (click)="fermerSuccessPopup()">Dismiss!</button>
+  </div>
+</div>
+
+<div class="popup-container" *ngIf="supprimerReservationConf" (click)="closePopupDelete($event)">
+  <div class="popup">
+    <h2>Delete History</h2>
+    <p>Are you sure you want to delete this history?</p>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="supprimerReser()">Delete</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-secondary" (click)="fermerSupprimerReser()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popup-container" *ngIf="showDeleteSuccessPopup">
+  <div class="popup">
+    <h2>History Deleted!</h2>
+    <button type="button" class="btn btn-primary" (click)="closeDeleteSuccessPopup()">Dismiss</button>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<!-- owner-list.component.html -->
+
+<h1>Owners</h1>
+
+<!-- Votre formulaire de recherche et de filtrage ici -->
+<div class="from-outline mt-3">
+  <form>
+   
+    <input class="form-control" [(ngModel)]="login" list="datalistOptions" id="exampleDataList" name="exampleDataList" placeholder="Type to search..."
+    style="width: 300px;height: 35px;border-radius: 50px;">
+    
+    <button type="button" (click)="filrage()" class="btn btn-outline" style="height: 35px; border-radius: 50px;background-color: rgba(65.66, 187.93, 35.10, 0.50);">
+      <i class="fa fa-filter" aria-hidden="true"></i> filter
+    </button>
+    <!-- <button type="button" class="btn btn-outline-create" routerLink="/create" style="border-radius: 50px;height: 35px;">
+      <i class="fa fa-plus" aria-hidden="true"></i>create
+    </button> -->
+  </form>
+</div>
+
+<div class="table">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Email</th>
+        <th scope="col">Number of stations</th>
+        <th scope="col">Action</th>
+        <th scope="col">Station</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let owner of allowner.ownerstation">
+        <td>{{ owner.owner?.firstname }} {{ owner.owner?.lastname  }}</td>
+        <td>{{ owner.owner?.phone }}</td>
+        <td>{{ owner.owner?.country }} {{ owner.owner?.city }} {{ owner.owner?.street }}</td>
+        
+        <ng-container *ngIf="owner.owner?.loginType === 'N'; else noLogin">
+          <td>{{ owner.owner?.login }}</td>
+        </ng-container>
+        <ng-template #noLogin> 
+          <td>{{ owner.owner?.email }}</td>
+        </ng-template>
+
+        <td>{{ owner.stattions?.length }}</td>
+        <td>
+          <div class="d-flex align-items-center">
+            <i class="fa fa-trash" (click)="openDeletePopup(owner.owner?.id )" aria-hidden="true" style="padding: 5px; color: grey;"></i>
+            <div class="form-check form-switch ms-3">
+              <input class="form-check-input" type="checkbox" id="activeSwitch" [checked]="owner.owner?.etat == 'actif'" (click)="toggleActive(owner.owner)">
+              <label class="form-check-label" for="activeSwitch">{{ owner.owner?.etat=='actif' ? 'Active' : 'Inactive' }}</label>
+            </div>
+          </div>
+        </td>
+        <td><button class="btn btn-outline" (click)="Station(owner.owner)"><i class="fa fa-eye" aria-hidden="true"></i></button>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end" >
+    <li class="page-item ">
+     <!--<a class="page-link">Previous</a>-->
+     <button class="page-link" (click)="Previous()">Previous</button>
+    </li >
+    <!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+    <li class="page-item">
+      <!--<a class="page-link" href="#">Next</a>-->
+      <button class="page-link" (click)="next()">Next</button>
+    </li>
+  </ul>
+</nav>
+<!-- Affichage des informations du propriétaire sélectionné -->
+<!-- <div class="owner-details" *ngIf="selectedOwner">
+  <h2>Détails du propriétaire</h2>
+  <div>
+    <p><strong>First name:</strong> {{ selectedOwner.firstname }}</p>
+    <p><strong>Last name:</strong> {{ selectedOwner.lastname }}</p>
+    <p><strong>Phone number:</strong> {{ selectedOwner.phone }}</p>
+    <p><strong>Address:</strong> {{ selectedOwner.adress }}</p>
+    <p><strong>Zone:</strong> {{ selectedOwner.zone }}</p>
+    <p><strong>Status:</strong> {{ selectedOwner.status }}</p>
+    <p><strong>Number of station:</strong> {{ selectedOwner.stationnum }}</p>
+  </div>
+</div> -->
+<div class="popup-container" *ngIf="showDeletePopup" (click)="closePopupDelete($event)">
+  <div class="popup">
+    <h2>Delete Owner</h2>
+    <p>Are you sure you want to delete this Owner?</p>
+    <div class="button-container">
+      <button type="button" class="btn btn-primary" (click)="deleteOwner(showDeletePopup)">Yes, Delete</button>
+      <button type="button" class="btn btn-secondary ms-3" (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
+</div> 
+

@@ -1,0 +1,130 @@
+<!-- zone-list.component.html -->
+
+<h1>Zones</h1>
+<div class="from-outline mt-3">
+  <form>
+    
+    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..."
+    style="width: 300px;height: 35px;border-radius: 50px;">
+    
+    <button type="button" class="btn btn-outline" style="height: 35px; border-radius: 50px;background-color: rgba(65.66, 187.93, 35.10, 0.50);">
+      <i class="fa fa-filter" aria-hidden="true"></i> filter
+    </button>
+    <button type="button" class="btn btn-outline-create" (click)="openCreatePopup()"
+      style="border-radius: 50px;height: 35px;">
+      <i class="fa fa-plus" aria-hidden="true"></i>create
+    </button>
+  </form>
+</div>
+
+<div class="from-outline mt-3">
+  <form>
+    <!-- Votre formulaire de recherche et de filtrage ici -->
+  </form>
+</div>
+
+<div class="table">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Zone name</th>
+        <th scope="col">Number of admin</th>
+       <!-- <th scope="col">Stations</th>-->
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let zone of zoneAdminList">
+      <tr  >
+        <th>{{ zone.name }}</th>
+        <th>{{ zone.nbr }}</th>
+        <th>
+          <button class="btn btn-outline" (click)="openDeletePopup(zone.name)"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;
+          <button class="btn btn-outline" (click)="openEditPopup(zone.name)"><i class="fa fa-pen" aria-hidden="true"></i></button>&nbsp;
+        </th>
+      </tr>
+    </tbody>
+    <tbody *ngFor="let zone of zoneNoAdminList">
+      <tr  >
+        <th>{{ zone.name }}</th>
+        <th>{{ zone.nbr }}</th>
+        <th>
+          <button class="btn btn-outline" (click)="openDeletePopup(zone.name)"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;
+          <button class="btn btn-outline" (click)="openEditPopup(zone.name)"><i class="fa fa-pen" aria-hidden="true"></i></button>&nbsp;
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <div class="popup-container" *ngIf="showDeletePopup" (click)="cancelDelete2($event)">
+    <div class="popup">
+      <h2>Delete Zone</h2>
+      <p>Are you sure you want to delete this Zone?</p>
+      <button type="button" class="btn btn-primary" (click)="deleteZone()">Yes, Delete</button>
+      <button type="button" class="btn btn-secondary ms-3" (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
+  <div class="popup-container" *ngIf="showDeleteSuccessPopup" (click)="closeDeleteSuccessPopup2($event)">
+    <div class="popup">
+      <h2>Zone Deleted!</h2>
+      <button type="button" class="btn btn-primary" (click)="closeDeleteSuccessPopup()">Dismiss</button>
+    </div>
+  </div>  
+</div>
+<!-- //////////////////////////////////////////////////////// -->
+<div class="popup-container" *ngIf="showZoneCreatePopup" (click)="closeCreatePopup2($event)">
+  <div class="popup">
+    <h2>Create Zone</h2>
+    <form>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="zoneName" class="form-label">Zone Name</label>
+          <input type="text" class="form-control" required id="zoneName" [(ngModel)]="zoneName" name="zoneName" >
+          <label id="alertvide" style="color: red;display: none;">you must fill in the field</label>
+          <label id="alertexist" style="color: red;display: none;">This zone's name is exist </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" (click)="submitCreateZoneForm()">Create</button>
+          <button type="button" class="btn btn-secondary ms-3" (click)="closeCreatePopup()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showZoneSuccessPopup">
+  <div class="popup">
+    <h2>Zone Created!</h2>
+    <button type="button" class="btn btn-primary" (click)="closeCreatePopup()">Dismiss!</button>
+  </div>
+</div>
+<!-- //////////////////////////////////////////////////////// -->
+<div class="popup-container" *ngIf="showZoneEditPopup" (click)="closeEditPopup2($event)">
+  <div class="popup">
+    <h2>Edit Zone</h2>
+    <form>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="zoneName" class="form-label">Zone Name</label>
+          <input type="text" class="form-control" id="zoneName" [(ngModel)]="zoneName" name="zoneName" required>
+          <label id="alertvideED" style="color: red;display: none;">you must fill in the field</label>
+          <label id="alertexistED" style="color: red;display: none;">This zone's name is exist </label>
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" (click)="submitEditZoneForm()">Save Changes</button>
+          <button type="button" class="btn btn-secondary ms-3" (click)="closeEditPopup()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showEditSuccessPopup" (click)="closeEditPopup3($event)">closeEditPopup2
+  <div class="popup">
+    <h2>Zone Edited!</h2>
+    <button type="button" class="btn btn-primary" (click)="closeEditPopup()">Dismiss!</button>
+  </div>
+</div>
