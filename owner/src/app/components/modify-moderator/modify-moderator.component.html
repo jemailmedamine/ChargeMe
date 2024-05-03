@@ -1,0 +1,30 @@
+<h2>Modifier les détails du modérateur</h2>
+
+<form (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="firstname">Prénom:</label>
+    <input type="text" class="form-control" id="firstname" [(ngModel)]="moderator.firstname" name="firstname" required>
+  </div>
+  <div class="form-group">
+    <label for="lastname">Nom de famille:</label>
+    <input type="text" class="form-control" id="lastname" [(ngModel)]="moderator.lastname" name="lastname" required>
+  </div>
+  <div class="form-group">
+    <label for="phone">Numéro de téléphone:</label>
+    <input type="text" class="form-control" id="phone" [(ngModel)]="moderator.phone" name="phone" required>
+  </div>
+  <div class="form-group">
+    <label for="address">Adresse:</label>
+    <input type="text" class="form-control" id="address" [(ngModel)]="moderator.address" name="address" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="status">Statut:</label>
+    <input type="text" class="form-control" id="status" [(ngModel)]="moderator.status" name="status" required>
+  </div>
+  <div class="form-group">
+    <label for="stationnum">Nombre de stations:</label>
+    <input type="number" class="form-control" id="stationnum" [(ngModel)]="moderator.stationnum" name="stationnum" required>
+  </div>
+  <button type="submit" class="btn ">Enregistrer </button>
+</form>

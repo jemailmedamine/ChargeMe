@@ -1,0 +1,77 @@
+/* Styles for the claim component */
+.table {
+    margin: 20px;
+    height: 50px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: solid 1px rgba(65, 187, 35, 0.5);
+    max-width: 80%; /* Added max-width for responsiveness */
+    width: 400px; /* Example width for desktop */
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+  }
+  
+  .popup img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .popup button {
+    padding: 5px;
+    margin-right: 5px;
+    height: 30px; 
+    border-radius: 30px;
+    border: none;
+    background-color: rgba(65, 187, 35, 0.5);
+  }
+  
+  .popup .btngroup {
+    display: flex;
+    margin-left: auto; /* Adjusted for better positioning */
+  }
+  
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+  }
+  
+  /* Media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%; /* Adjusted width for smaller screens */
+    }
+  }
+  

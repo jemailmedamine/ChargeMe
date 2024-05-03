@@ -1,0 +1,11 @@
+.form-group{
+    width: 50%;
+    margin-left: 20%;
+}
+.btn{
+    background-color: #a0dd91;
+    width: 10%;
+    margin-left: 50%;
+    margin-top: 20px;
+    border-radius: 30px;
+}

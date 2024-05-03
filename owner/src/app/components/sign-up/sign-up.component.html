@@ -1,0 +1,58 @@
+<section style="display: flex;">
+  <div class="cover">
+    <img [src]="image">
+  </div>
+  <div class="content" style="flex: 1;">
+    <div class="logo">
+      <img [src]="image">
+    </div>
+    <div class="formBx" style="display: flex;">
+      <form style="display: flex; flex: 1;" (submit)="signIn($event)" #createOwnerForm="ngForm">
+        <div style="flex: 1; padding-right: 10px;">
+          <h2>SignUp</h2>
+          <div class="inputBx">
+            <span>First name</span>
+            <input type="text" name="firstName" id="firstName" [(ngModel)]="owner.firstname" required>
+            <span>Last name</span>
+            <input type="text" name="lastName" id="lastName" [(ngModel)]="owner.lastname" required>
+            <span>Email</span>
+            <input type="email" name="email" id="email" #email="ngModel" [(ngModel)]="owner.login" required email>
+            <label id="alertexistmailup" style="color: red; display: none;">This Email is existed</label>
+            <label id="alertprob" style="color: red; display: none;">You have a problem in your SignUp</label>
+            <label id="alertmajuscr" style="color: red; display: none;">An uppercase letter</label>
+            <span>Password</span>
+            <input type="password" name="password" id="password" [(ngModel)]="owner.password" required>
+            <span>Phone number</span>
+            <input type="text" name="Phone" id="Phone" [(ngModel)]="owner.phone" required>
+          </div>
+          <div class="row" style="display: flex; justify-content: center; margin-top: 20px;">
+            <a routerLink="/loginowner" class="btn btn-secondary btn-back" style="width: 80%;">Back</a>
+          </div>
+        </div>
+        
+        <div style="flex: 1; padding-left: 10px;">
+          <h2 style="border-bottom: solid 4px transparent;">&nbsp;</h2>
+          <div class="inputBx">
+            <span>Postal code</span>
+            <input type="text" name="Postal" id="Postal" [(ngModel)]="owner.codePostal" required>
+            <span>City</span>
+            <input type="text" name="City" id="City" [(ngModel)]="owner.city" required>
+            <span>Country</span>
+            <input type="text" name="Country" id="Country" [(ngModel)]="owner.country" required>
+            <span>Street</span>
+            <input type="text" name="Street" id="Street" [(ngModel)]="owner.street" required>
+          </div>
+          <div class="remember">
+            <label><input type="checkbox" name="policy" value="N" [(ngModel)]="owner.loginType" id="policy" required> Accept policy conditions</label>
+          </div><br>
+          <div class="row" style="display: flex; justify-content: center; margin-top: 20px;">
+            <!-- <input type="submit" value="Sign up" class="btn btn-primary btn-signin" style="width: 80%;" [disabled]="!createOwnerForm.valid"> -->
+        <button type="submit" #submitButton class="btn btn-primary btn-signin" style="width: 80%;" [disabled]="!createOwnerForm.valid" >Sign up</button>
+            
+          </div>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
