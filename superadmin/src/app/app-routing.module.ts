@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'adminlist1', component: Adminlist1Component },
   { path: 'ownerlist1', component: Ownerlist1Component },
   { path: 'stationlist1', component: Stationlist1Component },
-  { path: 'moderatorlist1', component: Moderatorlist1Component },
+  { path: 'moderatorlist1', component: Moderatorlist1Component }, 
   { path: 'zoneliste1', component: Zoneliste1Component },
   { path: 'userlist1', component: Userlist1Component },
   { path: 'reclamation', component: ReclamationComponent },
@@ -31,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
