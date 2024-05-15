@@ -30,7 +30,14 @@
     <tr *ngFor="let client of allclient.clients">
       <td>{{client.firstname}} {{client.lastname}}</td>
       <td>{{client.phone}}</td>
-      <td>{{client.email}}</td>
+      <ng-container *ngIf="client?.loginType === 'N'; else noLogin">
+        <td>{{ client?.login }}</td>
+      </ng-container>
+      <ng-template #noLogin> 
+        <td>{{ client?.email }}</td>
+      </ng-template>
+      <!-- <td>{{client.email}}</td> -->
+      
       <td>
         <!-- <button class="btn fa fa-pencil" (click)="editClient(client)"></button> -->
         <i class="fa fa-trash" aria-hidden="true" (click)="openDeletePopup(client.id)" openDeletePopup style="padding: 5px; color: grey;"></i>
