@@ -148,4 +148,9 @@ async  cancelled() {
           this.statePopup = false;
         }
       }
+      subtractOneHour(dateStr: any): Date {
+        const date = new Date(dateStr);
+        date.setHours(date.getHours() - 1);
+        return date;
+      }
 }

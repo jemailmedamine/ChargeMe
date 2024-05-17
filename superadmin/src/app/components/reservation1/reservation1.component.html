@@ -17,7 +17,7 @@
         <td><img [src]="img1" alt="Photo de l'utilisateur"></td>
         <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
         <td>{{ reservation.phone }}</td>
-        <td>{{reservation.dateReservation | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ subtractOneHour(reservation.dateReservation) | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>
           <ng-container *ngIf="reservation.etat == 'Terminer';">
             Finish

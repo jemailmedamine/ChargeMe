@@ -48,7 +48,7 @@
       <td>{{ reservation.firstname }}</td>
       <td>{{ reservation.lastname }}</td>
       <td>{{ reservation.phone }}</td>
-      <td>{{ reservation.dateReservation | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+      <td>{{ subtractOneHour(reservation.dateReservation) | date:'yyyy-MM-dd HH:mm:ss' }}</td>
       <td>{{ reservation.period }}</td>
       <td>{{ reservation.Born_name }}</td>
       <!-- Actions buttons -->
